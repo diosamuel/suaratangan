@@ -95,11 +95,11 @@ export default function(){
 return (
 	<>
 		<Navbar title="Kalimat ke Bahasa Isyarat"/>
-    	<div className="flex flex-col items-center justify-center pt-8 pb-20 w-full">
-    		<div className="flex flex-col gap-3">
+    	<div className="flex flex-col items-center justify-center">
+    		<div className="flex flex-col gap-3 bg-white p-5 shadow-xl">
+    		<h1 className="font-bold text-xl">Kalimat ke Bahasa Isyarat</h1>
 				<div className="w-80 bg-blue-200 rounded p-3">
-    				<p className="font-bold">Kalimat ke Bahasa Isyarat</p>
-    				<p>Hanya bisa menerjemahkan huruf/abjad</p>
+    				<p>Saat ini hanya bisa menerjemahkan huruf atau abjad</p>
     			</div>
     			<canvas className="border-2 border-gray-300 rounded-lg mirror" height={200} width={200} ref={canvasRef}></canvas>
       			<div className="flex flex-wrap w-80 h-20 overflow-y-scroll">
@@ -115,8 +115,8 @@ return (
     				<input type="range" className="w-[70%]" step={500} min={500} max={3000} onChange={adjustTime}/>
     				<p>{time/1000} detik</p>
     			</div>
-    			<input type="text" className="p-3 border-2 border-gray-300 w-80 rounded-lg" placeholder="Masukkan kalimat disini" onInput={userInput}/>
-    			<button className={`${!isPlaying?"bg-blue-500":"bg-blue-200"} p-3 w-80 rounded-lg text-white`} onClick={playCanvas} disabled={isPlaying}>Terjemahkan</button>
+    			<input type="text" className="p-3 border-2 border-gray-300 w-80 rounded-lg" placeholder="Masukkan kalimat disini" onInput={userInput} autoFocus/>
+    			<button className={`${!isPlaying?"bg-blue-500":"bg-blue-200"} p-3 w-80 rounded-lg text-white mb-16`} onClick={playCanvas} disabled={isPlaying}>Terjemahkan</button>
     		</div>
 			<Footer/>
 		</div>

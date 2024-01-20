@@ -3,7 +3,6 @@ import { IconHome,IconAbc,IconNotebook,IconLanguage,IconUserCircle,IconBrandYout
 import Footer from "../component/Footer.jsx"
 import Navbar from "../component/Navbar.jsx"
 import video from "../assets/video.json"
-import personSignLang from "../assets/storyset-sign-lang.jpg"
 
 export default function(){
 

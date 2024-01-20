@@ -2,7 +2,11 @@ import { useState } from 'react'
 import { IconHome,IconAbc,IconNotebook,IconLanguage,IconUserCircle,IconBrandYoutubeFilled,IconDeviceGamepad2,IconCardsFilled } from '@tabler/icons-react';
 import Footer from "./component/Footer.jsx"
 import signA from "./assets/sign-A.png"
+import logo from "./assets/logo.png"
 import video from "./assets/video.json"
+import handsWithSign from "./assets/hands-with-sign-language-freepik.jpg"
+import groupSign from "./assets/rear-view-man-with-raised-hand-group-therapy-freepik.jpg"
+import aslSign from "./assets/asl-freepik.jpg"
 import './main.css'
 
 function MarkupFrame(url) {
@@ -33,6 +37,20 @@ function App() {
     icon:<IconNotebook/>,
     href:"/belajar"
   }]
+
+  let articles=[{
+    title:"Bahasa Isyarat: Pintu Menuju Komunikasi Inklusif",
+    img:handsWithSign,
+    href:"/belajar/artikel/1"
+  },{
+    title:"Perkenalan Diri dalam Bahasa Isyarat",
+    img:groupSign,
+    href:"/belajar/artikel/2"
+  },{
+    title:"ASL, Mengenal Bahasa Isyarat Amerika",
+    img:aslSign,
+    href:"/belajar/artikel/3"
+  }]
   return (
     <>
     <div className="flex flex-col items-center justify-center">
@@ -58,8 +76,6 @@ function App() {
 
 
           <div className="flex flex-col gap-3">
-            <div className="flex flex-row justify-between items-center">
-            </div>
             <div className="flex gap-2">
                 <div className="flex flex-row justify-between w-full rounded-lg bg-blue-200">
                   <div className="p-5">
@@ -94,6 +110,47 @@ function App() {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <div className="flex gap-2">
+                <div className="flex flex-row justify-between w-full rounded-lg bg-orange-200">
+                  <div className="p-5">
+                    <p>Terjemahkan</p>
+                    <h1 className="text-xl font-semibold">Terjemahkan kalimat ke bahasa isyarat</h1>
+                    <br/>
+                    <a className="bg-orange-600 p-2 pr-5 pl-5 rounded-full border-2 border-black font-medium text-sm text-white" href="/terjemah">Coba</a>
+                  </div>
+                  <div>
+                    <img src={logo} className="w-[15em]"/>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-row justify-between items-center">
+              <h1 className="text-lg font-medium">Artikel</h1>
+              <a className="bg-orange-300 pr-3 pl-3 p-2 rounded-full border-2 border-black text-xs font-medium active:bg-orange-400" href="/belajar">Semua</a>
+            </div>
+            <div className="w-full overflow-auto">
+            <div className="flex flex-row w-[50em] gap-3">
+              {articles.map(article=>(
+                <div className="w-[14em] h-full rounded-2xl border hover:shadow-lg">
+                <a href={article.href}>
+                <img src={article.img} className="w-full h-[9em] object-cover rounded-lg"/>
+                <div className="flex flex-col justify-between align-middle p-3">
+                  <h3 className="text-lg font-medium">{article.title}</h3>
+                </div>
+                </a>
+                </div>
+              ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mb-[5em]">
+            <span>Copyright &copy;2024 SuaraTangan</span>
           </div>
 
         </div>

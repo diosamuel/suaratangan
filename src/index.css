@@ -14,7 +14,7 @@ transform: rotateY(180deg)
 /*  transform: scale(-1, -1);*/
 transform: none;
 }
-/*
+
 ::-webkit-scrollbar {
   width: 0px;
 }
@@ -24,12 +24,11 @@ transform: none;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: lightblue;
-  border-radius: 18px;
+  background: #dfdfdf;
+  border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
-  border-radius: 18px;
+  background: #efefef;
+  border-radius: 0px;
 }
-*/

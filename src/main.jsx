@@ -20,6 +20,9 @@ export default function App() {
           <Route path="huruf" element={<Huruf />} />
           <Route path="sibi" element={<TentangSIBI />} />
           <Route path="bisindo" element={<TentangBISINDO />} />
+{/*          <Route path="artikel">
+            <Route path=":id" element={<Artikel/>}>
+          </Route>*/}
         </Route>
         <Route path="terjemah" element={<Terjemah/>}/>
         <Route path="kuis" element={<Game/>}/>
