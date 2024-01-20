@@ -27,7 +27,7 @@ function App() {
   },{
     title:"Kuis Isyarat",
     icon:<IconDeviceGamepad2/>,
-    href:"/belajar/game"
+    href:"/kuis"
   },{
     title:"Edukasi",
     icon:<IconNotebook/>,
@@ -61,19 +61,17 @@ function App() {
             <div className="flex flex-row justify-between items-center">
             </div>
             <div className="flex gap-2">
-              {Array(1).fill(1).map(el=>(
                 <div className="flex flex-row justify-between w-full rounded-lg bg-blue-200">
                   <div className="p-5">
                     <p>Kuis Isyarat</p>
                     <h1 className="text-xl font-semibold">Huruf apakah ini?</h1>
                     <br/>
-                    <a className="bg-blue-600 p-2 pr-5 pl-5 rounded-full border-2 border-black font-medium text-sm text-white" href="#">Jawab</a>
+                    <a className="bg-blue-600 p-2 pr-5 pl-5 rounded-full border-2 border-black font-medium text-sm text-white" href="/kuis">Jawab</a>
                   </div>
                   <div>
                     <img src={signA} className="w-[12em]"/>
                   </div>
                 </div>
-              ))}
             </div>
           </div>
 

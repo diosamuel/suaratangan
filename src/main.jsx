@@ -5,6 +5,7 @@ import Home from './App.jsx'
 import Belajar from "./pages/Belajar.jsx";
 import Huruf from "./pages/Huruf.jsx";
 import Terjemah from "./pages/Terjemah.jsx";
+import Game from "./pages/Game.jsx";
 import TentangSIBI from "./pages/TentangSIBI.jsx";
 import TentangBISINDO from "./pages/TentangBISINDO.jsx";
 import './index.css'
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="bisindo" element={<TentangBISINDO />} />
         </Route>
         <Route path="terjemah" element={<Terjemah/>}/>
+        <Route path="kuis" element={<Game/>}/>
       </Routes>
     </BrowserRouter>
   );
