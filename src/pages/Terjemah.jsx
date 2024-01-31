@@ -26,13 +26,17 @@ export default function(){
   }
 
   const playCanvas = () => {
-    setIsPlaying(!isPlaying);
-    setCurrentIndex(0);
-    setBahasa(selectInput.current.value)
-    if(bahasa == "BISINDO"){
-    	setKalimat(huruf.map(x=>BISINDO_LETTER[x.toUpperCase()]))
+    if(isPlaying){
+      setIsPlaying(false)
     }else{
-    	setKalimat(huruf.map(x=>SIBI_LETTER[x.toUpperCase()]))
+      setIsPlaying(!isPlaying);
+      setCurrentIndex(currentIndex || 0);
+      setBahasa(selectInput.current.value)
+      if(bahasa == "BISINDO"){
+      	setKalimat(huruf.map(x=>BISINDO_LETTER[x.toUpperCase()]))
+      }else{
+      	setKalimat(huruf.map(x=>SIBI_LETTER[x.toUpperCase()]))
+      }
     }
   };
 
@@ -102,9 +106,9 @@ return (
     				<p>Saat ini hanya bisa menerjemahkan huruf atau abjad</p>
     			</div>
     			<canvas className="border-2 border-gray-300 rounded-lg mirror" height={200} width={200} ref={canvasRef}></canvas>
-      			<div className="flex flex-wrap w-80 h-20 overflow-y-scroll">
+      			<div className="flex flex-wrap w-80 h-32 overflow-y-scroll border">
       			  {huruf.map((letter,pos)=>
-      			    <button className="w-10 h-10 p-2 text-center active:bg-orange-600" id={`huruf${pos}`} onClick={()=>playAlphabet(letter)}>{letter}</button>
+      			    <button className="w-10 h-10 p-1 text-center active:bg-orange-600" id={`huruf${pos}`} onClick={()=>playAlphabet(letter)}>{letter}</button>
       			    )}
       			</div>
   	  			<select className="bg-orange-200 p-2 rounded-full border-2 border-orange-300" onChange={handleBahasaChange} ref={selectInput}>
@@ -116,7 +120,7 @@ return (
     				<p>{time/1000} detik</p>
     			</div>
     			<input type="text" className="p-3 border-2 border-gray-300 w-80 rounded-lg" placeholder="Masukkan kalimat disini" onInput={userInput} autoFocus/>
-    			<button className={`${!isPlaying?"bg-blue-500":"bg-blue-200"} p-3 w-80 rounded-lg text-white mb-16`} onClick={playCanvas} disabled={isPlaying}>Terjemahkan</button>
+    			<button className={`${!isPlaying?"bg-blue-500 text-white ":"bg-white text-blue-500 border border-blue-500"} p-3 w-80 rounded-lg mb-16`} onClick={playCanvas}>{!isPlaying?"Terjemahkan":"Berhenti"}</button>
     		</div>
 			<Footer/>
 		</div>

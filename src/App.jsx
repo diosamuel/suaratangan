@@ -8,6 +8,7 @@ import handsWithSign from "./assets/hands-with-sign-language-freepik.jpg"
 import groupSign from "./assets/rear-view-man-with-raised-hand-group-therapy-freepik.jpg"
 import aslSign from "./assets/asl-freepik.jpg"
 import './main.css'
+import kontenJSON from "./assets/konten.json"
 
 function MarkupFrame(url) {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -94,7 +95,7 @@ function App() {
                     <p>Kuis Isyarat</p>
                     <h1 className="text-xl font-semibold">Huruf apakah ini?</h1>
                     <br/>
-                    <a className="bg-blue-600 p-2 pr-5 pl-5 rounded-full border-2 border-black font-medium text-sm text-white" href="/kuis">Jawab</a>
+                    <a className="bg-blue-600 p-2 pr-5 pl-5 rounded-full font-medium text-sm text-white" href="/kuis">Jawab</a>
                   </div>
                   <div>
                     <img src={signA} className="w-[12em]"/>
@@ -106,7 +107,7 @@ function App() {
           <div className="flex flex-col gap-3">
             <div className="flex flex-row justify-between items-center">
               <h1 className="text-lg font-medium">Belajar Lewat Video</h1>
-              <a className="bg-orange-300 pr-3 pl-3 p-2 rounded-full border-2 border-black text-xs font-medium active:bg-orange-400" href="/belajar">Semua</a>
+              <a className="bg-orange-300 pr-3 pl-3 p-2 rounded-full text-xs font-medium active:bg-orange-400" href="/belajar">Semua</a>
             </div>
             <div className="flex gap-2 w-full overflow-auto">
               {video.map(vid=>(
@@ -131,7 +132,7 @@ function App() {
                     <p>Terjemahkan</p>
                     <h1 className="text-xl font-semibold">Terjemahkan kalimat ke bahasa isyarat</h1>
                     <br/>
-                    <a className="bg-orange-600 p-2 pr-5 pl-5 rounded-full border-2 border-black font-medium text-sm text-white" href="/terjemah">Coba</a>
+                    <a className="bg-orange-600 p-2 pr-5 pl-5 rounded-full font-medium text-sm text-white" href="/terjemah">Coba</a>
                   </div>
                   <div>
                     <img src={logo} className="w-[15em]"/>
@@ -143,16 +144,21 @@ function App() {
           <div className="flex flex-col gap-3">
             <div className="flex flex-row justify-between items-center">
               <h1 className="text-lg font-medium">Artikel</h1>
-              <a className="bg-orange-300 pr-3 pl-3 p-2 rounded-full border-2 border-black text-xs font-medium active:bg-orange-400" href="/belajar">Semua</a>
+              <a className="bg-orange-300 pr-3 pl-3 p-2 rounded-full text-xs font-medium active:bg-orange-400" href="/belajar">Semua</a>
             </div>
             <div className="w-full overflow-auto">
-            <div className="flex flex-row w-[50em] gap-3">
-              {articles.map(article=>(
-                <div className="w-[14em] h-full rounded-2xl border hover:shadow-lg">
-                <a href={article.href}>
-                <img src={article.img} className="w-full h-[9em] object-cover rounded-lg"/>
+            <div className="flex flex-row w-[70em] gap-3">
+              {kontenJSON.map(article=>(
+                <div className="w-[100%] h-full rounded-lg border hover:shadow-lg mt-3">
+                <a href={`/artikel/${article.id}`}>
+                <img src={handsWithSign} className="w-full h-[9em] object-cover object-top rounded-lg"/>
                 <div className="flex flex-col justify-between align-middle p-3">
                   <h3 className="text-lg font-medium">{article.title}</h3>
+                  
+                  <div className="flex gap-3">
+                    <span className="text-gray-600 text-sm">{article.author}</span>
+                    <span className="text-gray-400 text-sm">{article.date}</span>
+                  </div>
                 </div>
                 </a>
                 </div>
