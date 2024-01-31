@@ -19,6 +19,7 @@ function MarkupFrame(url) {
     
 function App() {
   const [count, setCount] = useState(0)
+  const [boarding,setBoarding] = useState(true)
 
   let circleMenu=[{
     title:"Kalimat ke Isyarat",
@@ -51,12 +52,25 @@ function App() {
     img:aslSign,
     href:"/belajar/artikel/3"
   }]
+
+  setTimeout(()=>{
+    setBoarding(false)
+  },600)
   return (
     <>
+    {boarding?(
     <div className="flex flex-col items-center justify-center">
+      <div className="bg-blue-500 w-full lg:w-4/12 h-[100vh] flex flex-col items-center justify-center text-white">
+        <img src={logo}/>
+        <h1 className="text-2xl font-black">SuaraTangan</h1>
+        <p>Bangun dunia tanpa batasan suara!</p>
+      </div>
+    </div>):
+    (
+      <div className="flex flex-col items-center justify-center">
       <div className="bg-blue-500 w-full lg:w-4/12 shadow-md">
         <div className="p-6 text-white">
-          <h1 className="text-2xl font-black">Halo 👋</h1>
+          <h1 className="text-2xl font-black">Selamat datang! 👋</h1>
           <p className="text-xl">Bangun dunia tanpa batasan suara!</p>
           {/*<img src={talkingAmico} className="w-60 ml-auto"/>*/}
         </div>
@@ -73,8 +87,6 @@ function App() {
                 </a>
               ))}
           </div>
-
-
           <div className="flex flex-col gap-3">
             <div className="flex gap-2">
                 <div className="flex flex-row justify-between w-full rounded-lg bg-blue-200">
@@ -155,9 +167,9 @@ function App() {
 
         </div>
       </div>
-
-    <Footer/>
-    </div>
+      <Footer/>
+      </div>
+    )}
     </>
   )
 }
