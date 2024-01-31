@@ -15,6 +15,8 @@ export default function(){
   const selectInput = useRef(null)
 
   const userInput = (ev) => {
+    setCurrentIndex(0)
+    setIsPlaying(false)
     let value = ev.target.value
     let val = value.replace(/[^a-zA-Z]/g, '').split("")
     if(bahasa == "BISINDO"){
@@ -30,7 +32,13 @@ export default function(){
       setIsPlaying(false)
     }else{
       setIsPlaying(!isPlaying);
-      setCurrentIndex(currentIndex || 0);
+      if(kalimat.length == currentIndex+1){
+        //restart
+        setCurrentIndex(0);
+      }else{
+        //dari posisi berhenti
+        setCurrentIndex(currentIndex);
+      }
       setBahasa(selectInput.current.value)
       if(bahasa == "BISINDO"){
       	setKalimat(huruf.map(x=>BISINDO_LETTER[x.toUpperCase()]))
