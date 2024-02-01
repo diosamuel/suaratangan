@@ -13,9 +13,9 @@ export default function(props){
 	return (
 		<>
 		<div className="flex flex-col items-center justify-center bg-gray-100">
-			<img src={signLanguangeGroup} className="rounded-lg lg:w-4/12 mt-3 mb-3 brightness-50"/>
-			<div className=" absolute top-16 text-white text-center">
-				<header className="text-2xl font-bold">{filteredKonten.title}</header>
+			<img src={signLanguangeGroup} className="lg:rounded-lg lg:w-4/12 mt-3 mb-3 brightness-50"/>
+			<div className=" absolute lg:top-16 top-12 text-white text-center">
+				<header className="lg:text-2xl text-xl font-bold">{filteredKonten.title}</header>
 				<p className="text-sm mt-2">{filteredKonten.author}</p>
 				<p className="text-sm">{filteredKonten.date}</p>
 			</div>

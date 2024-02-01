@@ -3,6 +3,8 @@ import { IconHome,IconAbc,IconNotebook,IconLanguage,IconUserCircle,IconBrandYout
 import Footer from "../component/Footer.jsx"
 import Navbar from "../component/Navbar.jsx"
 import video from "../assets/video.json"
+import kontenJSON from "../assets/konten.json"
+import handsWithSign from "../assets/hands-with-sign-language-freepik.jpg"
 
 export default function(){
 
@@ -37,7 +39,31 @@ return (
         					</a>
         				</div>
         			</div>
-
+          			<div className="flex flex-col gap-3">
+          			  <div className="flex flex-row justify-between items-center">
+          			    <h1 className="text-lg font-medium">Artikel</h1>
+          			    <a className="bg-orange-300 pr-3 pl-3 p-2 rounded-full text-xs font-medium active:bg-orange-400" href="/belajar">Semua</a>
+          			  </div>
+          			  <div className="w-full overflow-auto">
+          			  <div className="flex flex-row w-[70em] gap-3">
+          			    {kontenJSON.map(article=>(
+          			      <div className="w-[100%] h-full rounded-lg border hover:shadow-lg mt-3">
+          			      <a href={`/artikel/${article.id}`}>
+          			      <img src={handsWithSign} className="w-full h-[9em] object-cover object-top rounded-lg"/>
+          			      <div className="flex flex-col justify-between align-middle p-3">
+          			        <h3 className="text-lg font-medium">{article.title}</h3>
+          			        
+          			        <div className="flex gap-3">
+          			          <span className="text-gray-600 text-sm">{article.author}</span>
+          			          <span className="text-gray-400 text-sm">{article.date}</span>
+          			        </div>
+          			      </div>
+          			      </a>
+          			      </div>
+          			    ))}
+          			    </div>
+          			  </div>
+          			</div>
           			<div className="flex flex-col gap-3">
           			  <div className="flex flex-row justify-between items-center">
           			    <h1 className="text-lg font-medium">Belajar Lewat Video</h1>
