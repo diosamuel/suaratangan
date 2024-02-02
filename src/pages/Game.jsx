@@ -8,6 +8,7 @@ export default function(){
 	let [started, setStart] = useState(false)
 	let [currentQuestion,setCurrentQuestion] = useState(null)
 	let [answer, setAnswer] = useState(false)
+	let [modal, setModal] = useState(false)
 	let [bahasa, setBahasa] = useState('BISINDO')
 	const handleBahasaChange = (event) => {
     	setBahasa(event.target.value);
@@ -34,19 +35,42 @@ export default function(){
 	}
 
 	function nextQuestion(){
-		if(answer){
-			alert("Benar")
-			setAnswer(false)
-			startGame()
-		}else{
-			alert("Salah, coba lagi")
+		let val = document.querySelector("input")
+		if(val.value){
+			val.value = ""
+			if(answer){
+				setAnswer(true)
+				setModal(true)
+				setTimeout(()=>{
+					setModal(false)
+					startGame()
+				},1500)
+			}else{
+				setAnswer(false)
+				setModal(true)
+				setTimeout(()=>{
+					setModal(false)
+					startGame()
+				},1500)
+			}
 		}
+
 	}
 	return (
 		<>
 		{/*<Navbar title="Game"/>*/}
-		<div className="flex flex-col items-center justify-center">
-			<div className="w-full lg:w-4/12 shadow-lg">
+		<div className="flex flex-col items-center justify-center brightness-100">
+			{modal?(
+			<div className="flex flex-col items-center justify-center">
+				<div className={`w-64 h-64 p-5 ${answer?"bg-blue-300":"bg-orange-300"} text-center rounded-lg shadow-2xl absolute top-52 brightness-100 z-10 flex flex-col items-center justify-center gap-2`}>
+					<h2>Jawaban {answer?"Benar":"Salah"}</h2>
+					<img src={currentQuestion.isyarat} width={120} className="rounded-2xl mirror"/>
+					<h3>Huruf: {currentQuestion.answer}</h3>
+				</div>
+			</div>
+			):<></>}
+
+			<div className={`w-full lg:w-4/12 shadow-lg ${modal?"brightness-50":"brightness-100"}`}>
 				<div className={`bg-blue-500 h-screen ${started?"hidden":"flex flex-col"} justify-center items-center`}>
 					<h1 className="text-xl font-bold text-white p-5 text-center">Latih Kemampuan Bahasa Isyaratmu disini!</h1>
 					<select className="bg-orange-200 p-1 rounded-full border-2 border-orange-300" onChange={handleBahasaChange}>
@@ -62,7 +86,7 @@ export default function(){
 					</div>
 					<div className="mt-5 flex flex-col items-center gap-3">
 						<h1 className="text-xl font-medium">Huruf apakah ini?</h1>
-						<input type="text" className="p-3 border-2 border-black w-80 rounded-lg text-black" placeholder="Masukkan jawaban disini" maxlength={1} onInput={(ev)=>captureAnswer(ev.target.value.toLowerCase())}/>
+						<input type="text" className="p-3 border-2 border-black w-80 rounded-lg text-black" placeholder="Masukkan jawaban disini" maxLength={1} onInput={(ev)=>captureAnswer(ev.target.value.toLowerCase())}/>
 						<button className="p-3 bg-blue-500 rounded text-white" onClick={nextQuestion}>Jawab</button>
 					</div>
 				</div>
